@@ -19,7 +19,7 @@ class Provider extends AbstractProvider {
     public $serviceName = 'db';
 
 
-    public function init() {        
+    public function init() {   
         
         $config = $this->container->get('config');
         $db = new Connection(
@@ -30,6 +30,7 @@ class Provider extends AbstractProvider {
                 $config['database']['port'],
                 $config['database']['charset']
         );
+        
         $this->container->set($this->serviceName,$db);
     }
 
