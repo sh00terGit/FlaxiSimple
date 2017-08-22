@@ -19,8 +19,17 @@ class Provider extends AbstractProvider {
     public $serviceName = 'db';
 
 
-    public function init() {
-        $db = new Connection('symfony');
+    public function init() {        
+        
+        $config = $this->container->get('config');
+        $db = new Connection(
+                $config['database']['dbname'],
+                $config['database']['user'],
+                $config['database']['password'],
+                $config['database']['host'],
+                $config['database']['port'],
+                $config['database']['charset']
+        );
         $this->container->set($this->serviceName,$db);
     }
 
