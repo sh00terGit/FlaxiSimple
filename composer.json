@@ -1,0 +1,12 @@
+{
+    "name": "ivc_shipul/cms.local",
+    "require": {},
+    "autoload": {
+        "psr-4": {            
+            "Engine\\" : "Engine",
+            "Engine\\DI\\" : "Engine/DI",
+            "Cms\\" : "Cms",
+            "Admin\\" : "Admin"
+        }
+    }
+}
