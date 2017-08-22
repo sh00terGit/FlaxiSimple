@@ -9,14 +9,16 @@
 namespace Admin\Controller;
 
 /**
- * Description of Dashboard
+ * Description of LoginController
  *
  * @author ivc_shipul
  */
-class DashboardController extends AdminController{
-    //put your code here
+class DashboardController extends AdminController {
     
     public function index() {
-        echo 'dash';
+        
+        $this->view->render('dashboard');
+        
     }
 }
+

@@ -2,5 +2,6 @@
 return array(
         "Engine\\Service\\Database\\Provider",
         "Engine\\Service\\Router\\Provider",
-        "Engine\\Service\\View\\Provider"
+        "Engine\\Service\\View\\Provider",
+        "Engine\\Service\\Config\\Provider"
 );

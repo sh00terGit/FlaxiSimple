@@ -20,7 +20,4 @@ class AdminController extends Controller  {
         parent::__construct($container);       
     }
     
-    public function index() {
-        echo 'admin';
-    }
 }

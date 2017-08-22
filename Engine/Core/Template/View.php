@@ -19,7 +19,6 @@ class View {
 
     protected $theme;
 
-    
     /**
      * 
      */
@@ -35,11 +34,8 @@ class View {
      * @throws \Exception
      */
     public function render($template, $vars = array()) {
-        $templatePath = ROOT_DIR . "/Content/themes/default/" . $template . '.php';
-        if (!is_file($templatePath)) {
-            throw new \Exception(sprintf("Template %s not found in %s", $template, $templatePath));
-        }
-        
+        $templatePath = $this->getTemplatePath($template, ENV);
+
         $this->theme->setData($vars);
         extract($vars);
         ob_start();
@@ -53,6 +49,19 @@ class View {
         echo ob_get_clean();
     }
 
+    public function getTemplatePath($template, $env = null) {
+        
+        ($env == 'Cms') 
+            ? $templatePath = ROOT_DIR . "/Content/themes/default/" . $template . '.php' 
+            : $templatePath = ROOT_DIR . "/View/" . $template . '.php';
+        
+        
+        if (!is_file($templatePath)) {
+            throw new \Exception(sprintf("Template %s.php not found in %s", $template, $templatePath));
+            exit();
+        }
 
+        return $templatePath;
+    }
 
 }

@@ -23,6 +23,8 @@ abstract class Controller {
      */
     protected $container;
     protected $view;
+    
+    protected $config;
 
     /**
      * 
@@ -30,14 +32,9 @@ abstract class Controller {
      */
     public function __construct(DependentsInjection $container) {
         $this->container = $container;
-        $this->view = $this->setView();
+        $this->view = $this->container->get('view');
+        $this->config = $this->container->get('config'); 
     }
-
-    /**
-     * @return Engine\Core\Template\View 
-     */
-    public function setView() {
-        return $this->container->get('view');
-    }
+    
 
 }
