@@ -44,8 +44,8 @@ class Auth implements AuthInterface {
      */
     public function autorize($user) {
 
-        Cookie::set('auth.autorized', TRUE);
-        Cookie::set('auth.user', $user);
+        Cookie::set('auth_autorized', TRUE);
+        Cookie::set('auth_user', $user);
         $this->autorized = true;
         $this->user = $user;
     }
@@ -56,8 +56,8 @@ class Auth implements AuthInterface {
      */
     public function unAutorize($user) {
 
-        Cookie::delete('auth.autorized');
-        Cookie::delete('auth.user');
+        Cookie::delete('auth_autorized');
+        Cookie::delete('auth_user');
         $this->autorized    = false;
         $this->user         = null;
     }

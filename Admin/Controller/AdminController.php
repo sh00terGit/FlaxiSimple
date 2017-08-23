@@ -8,16 +8,37 @@
 
 namespace Admin\Controller;
 use Engine\Controller;
+use Engine\Core\Auth\Auth;
 
 
 class AdminController extends Controller  {   
     
-       /**
-     * 
-     * @param type $container
+    /**
+     *
+     * @var Auth $auth 
      */
-    public function __construct($container) {
-        parent::__construct($container);       
+       protected $auth;
+
+
+       /**
+        * 
+        * @param DI $container
+        */
+       public function __construct($container) {
+        parent::__construct($container);    
+        $this->auth = new Auth();
+        $this->checkAutorized();
+        
+        
+    }
+    
+    /**
+     * check autorized
+     */
+    public function checkAutorized() {
+       if(!$this->auth->autorized()) {
+            header("Location: /admin/login", true, 301);
+        } 
     }
     
 }

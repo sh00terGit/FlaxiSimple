@@ -23,7 +23,7 @@ abstract class Controller {
      */
     protected $container;
     protected $view;
-    
+    protected $request;
     protected $config;
 
     /**
@@ -34,6 +34,7 @@ abstract class Controller {
         $this->container = $container;
         $this->view = $this->container->get('view');
         $this->config = $this->container->get('config'); 
+        $this->request = $this->container->get('request');
     }
     
 
