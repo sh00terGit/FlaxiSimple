@@ -18,6 +18,8 @@ class HomeController extends CmsController{
 
  
     public function index() {
+        $user = $this->load->getRepository('User')->find(1);
+        var_dump($user);
         $this->view->render('index',array('name' => 'Andrey'));
         
     }

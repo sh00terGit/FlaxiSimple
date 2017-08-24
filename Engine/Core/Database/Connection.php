@@ -14,6 +14,7 @@ namespace Engine\Core\Database;
  * @author ivc_shipul
  */
 use PDO;
+
 //use Engine\Core\Config\Config;
 
 /**
@@ -33,14 +34,14 @@ class Connection {
     protected $statement;
     protected $queries = array();
 
-  public function __construct($dbname, $user = 'root', $password = '', $host = 'localhost', $port = 3306, $charset = 'utf8') {
-    $this->dbname = $dbname;
-    $this->user = $user;
-    $this->password = $password;
-    $this->host = $host;
-    $this->port = $port;
-    $this->charset = $charset;
-  }  
+    public function __construct($dbname, $user = 'root', $password = '', $host = 'localhost', $port = 3306, $charset = 'utf8') {
+        $this->dbname = $dbname;
+        $this->user = $user;
+        $this->password = $password;
+        $this->host = $host;
+        $this->port = $port;
+        $this->charset = $charset;
+    }
 
 //
 //    public function __construct() {
@@ -64,7 +65,7 @@ class Connection {
             $this->connection = new PDO($dsn, $this->user, $this->password, array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                    ));
+            ));
         } catch (PDOException $e) {
             throw new RuntimeException($e->getMessage());
         }
@@ -119,10 +120,17 @@ class Connection {
     }
 
     public function insert($table, $data) {
-        $sql = sprintf(
-                'INSERT INTO %s (%s) VALUES (%s);', $this->quoteIdentifier($table), implode(', ', array_map(array($this, 'quoteIdentifier'), array_keys($data))), substr(str_repeat('?, ', count($data)), 0, -2)
-        );
-        $this->query($sql, array_values($data));
+        try {
+            $sql = sprintf(
+                    'INSERT INTO %s (%s) VALUES (%s);', $this->quoteIdentifier($table), implode(', ', array_map(array($this, 'quoteIdentifier'), array_keys($data))), substr(str_repeat('?, ', count($data)), 0, -2)
+            );
+            $this->query($sql, array_values($data));
+        } catch (\Exception $exc) {
+            
+            echo $exc->getMessage();
+            exit();
+        }
+
         return $this->lastInsertId();
     }
 

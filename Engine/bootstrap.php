@@ -5,14 +5,14 @@ use Engine\Cms;
 use Engine\DI\DependentsInjection;
 
 try {
-    $containter = new DependentsInjection();
+    $container = new DependentsInjection();
     $services = require __DIR__ . '/Config/Services.php';
     foreach ($services as $service) {
-        $provider = new $service($containter);
+        $provider = new $service($container);
         $provider->init();
     }
     
-    $cms = new Cms($containter);
+    $cms = new Cms($container);
     $cms->run();
 } catch (\ErrorException $exc) {
     echo $exc->getMessage();

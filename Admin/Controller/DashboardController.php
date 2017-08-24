@@ -9,13 +9,17 @@
 namespace Admin\Controller;
 
 /**
- * Description of LoginController
+ * Description of DashboardController
  *
  * @author ivc_shipul
  */
 class DashboardController extends AdminController {
     
     public function index() {
+        $userRepository = $this->load->getRepository('User');
+       // $user = $this->load->createEntity('User',array('email' => 'abcd@cms.local','login' => 'abc','password'=>'123','role'=>'admin','hash'=>'123'));
+      //  $user = $userRepository->save($user);
+//        var_dump($user);
         $this->view->render('dashboard');
         
     }

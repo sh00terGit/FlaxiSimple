@@ -36,6 +36,7 @@ class Cms {
         try {
             require_once __DIR__."/../".mb_strtolower(ENV)."/Route.php";
             $routerDispatch = $this->router->dispatch(Common::getMethod(), Common::getPathUrl());
+           
             if ($routerDispatch == null) {
                 $routerDispatch = new DispatchedRoute('ErrorController::page404');
             }

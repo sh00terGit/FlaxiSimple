@@ -28,6 +28,7 @@ class AdminController extends Controller  {
         parent::__construct($container);    
         $this->auth = new Auth();
         $this->checkAutorized();
+       
         
         
     }
@@ -36,9 +37,19 @@ class AdminController extends Controller  {
      * check autorized
      */
     public function checkAutorized() {
-       if(!$this->auth->autorized()) {
-            header("Location: /admin/login", true, 301);
-        } 
+         if($this->auth->hashUser() == null) {            
+            header("Location: /admin/login");
+            exit;
+           
+        }
+    }
+    
+    
+    public function logout() {
+         $this->auth->unAutorize();         
+         header("Location: /admin/login");
+         exit();
+         
     }
     
 }

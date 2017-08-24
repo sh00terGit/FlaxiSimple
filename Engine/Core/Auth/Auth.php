@@ -21,7 +21,7 @@ class Auth implements AuthInterface {
      *
      * @var User $user 
      */
-    protected $user;
+    protected $hash_user;
 
     /**
      * @return bool autorized
@@ -34,32 +34,28 @@ class Auth implements AuthInterface {
      * 
      * @return User $user
      */
-    public function user() {
-        return $this->user;
+    public function hashUser() {
+        return Cookie::get('auth_user');
     }
 
     /**
      * 
-     * @param User $user
+     * @param hash user->hash
      */
-    public function autorize($user) {
+    public function autorize($hash_user) {
 
         Cookie::set('auth_autorized', TRUE);
-        Cookie::set('auth_user', $user);
-        $this->autorized = true;
-        $this->user = $user;
+        Cookie::set('auth_user', $hash_user);
     }
 
     /**
      * 
-     * @param User $user
+     * 
      */
-    public function unAutorize($user) {
+    public function unAutorize() {
 
         Cookie::delete('auth_autorized');
         Cookie::delete('auth_user');
-        $this->autorized    = false;
-        $this->user         = null;
     }
     
     /**

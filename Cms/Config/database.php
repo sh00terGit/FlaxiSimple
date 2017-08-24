@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'dbname' => 'simfony',
+    'dbname' => 'cms',
     'user' => 'root',
     'password' => '',
     'host' => 'localhost',

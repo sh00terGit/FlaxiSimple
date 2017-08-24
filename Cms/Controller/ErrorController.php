@@ -14,6 +14,6 @@ class ErrorController extends CmsController{
     
   
     public function page404() {
-        echo 'error';
+        echo 'error CMS';
     }
 }

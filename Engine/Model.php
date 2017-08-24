@@ -15,19 +15,16 @@ use Engine\DI\DependentsInjection;
  *
  * @author ivc_shipul
  */
-abstract class Controller {
+abstract class Model {
 
     /**
      *
      * @var DependentsInjection $container
      */
     protected $container;
-    protected $view;
-    protected $request;
+    
     protected $config;
-    protected $load;
-
-
+    protected $db;
 
     /**
      * 
@@ -35,11 +32,8 @@ abstract class Controller {
      */
     public function __construct(DependentsInjection $container) {
         $this->container = $container;
-        $this->view = $this->container->get('view');
         $this->config = $this->container->get('config'); 
-        $this->request = $this->container->get('request');
         $this->db = $this->container->get('db');
-        $this->load = $this->container->get('load');
     }
     
 
