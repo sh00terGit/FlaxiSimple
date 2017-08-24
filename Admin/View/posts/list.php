@@ -2,7 +2,7 @@
 <?= $this->theme->header() ?>
 <main>
     <div class="container">
-        <h3>Pages list <a href="/admin/pages/create">create page</a></h3>
+        <h3>Posts list <a href="/admin/posts/create">create post</a></h3>
 
         <table class="table table-hover">
             <thead>
@@ -13,12 +13,11 @@
                 </tr>
             </thead>
             <tbody>
-               
-                 <?php foreach ($pages as $page): ?>
+                 <?php foreach ($posts as $post): ?>
                 <tr>     
-                    <td><?=$page->id?></td>
-                    <td><a href="/admin/pages/edit/<?=$page->id?>" ><?=$page->title?></a></td>
-                    <td><?=$page->date?></td>
+                    <td><?=$post->id?></td>
+                    <td><a href="/admin/posts/edit/<?=$post->id?>" ><?=$post->title?></a></td>
+                    <td><?=$post->date?></td>
                 </tr>
                 <?php endforeach;?>
             </tbody>

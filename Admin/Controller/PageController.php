@@ -7,7 +7,7 @@ namespace Admin\Controller;
  * @author ivc_shipul
  */
 class PageController extends AdminController {
-    //put your code here
+   
     
     public function listing() {
         $pageRepository = $this->load->getRepository('Page');

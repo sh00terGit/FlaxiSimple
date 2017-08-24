@@ -1,6 +1,7 @@
 <?php
 
 namespace Engine;
+use Engine\DI\DependentsInjection;
 
 class Load {
 
@@ -8,6 +9,14 @@ class Load {
     const MASK_MODEL_REPOSITORY = '\%s\Model\%s\%sRepository';
 
     protected $repositories = array();
+    protected $container ;
+
+
+
+
+    public function __construct(DependentsInjection $container) {
+        $this->container = $container;
+    }
 
     /**
      * @param $modelName
@@ -16,7 +25,7 @@ class Load {
      */
     public function getRepository($modelName, $modelDir = false) {
 
-        global $container;
+        
         
         $modelName = ucfirst($modelName);
         $modelDir = $modelDir ? $modelDir : $modelName;
@@ -28,7 +37,7 @@ class Load {
         );
         
         if (!isset($this->repositories[$name])) {
-            $this->repositories[$name] = new $namespaceRepository($container);
+            $this->repositories[$name] = new $namespaceRepository($this->container);
         }
         return $this->repositories[$name];
 
