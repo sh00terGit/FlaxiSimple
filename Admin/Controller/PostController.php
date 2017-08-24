@@ -13,6 +13,10 @@ namespace Admin\Controller;
  *
  * @author ivc_shipul
  */
-class PostController {
-    //put your code here
+class PostController  extends AdminController{
+    
+    public function index() {
+        
+        echo 'dd';
+    }
 }

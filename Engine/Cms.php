@@ -34,7 +34,7 @@ class Cms {
 
     public function run() {
         try {
-            require_once __DIR__."/../".mb_strtolower(ENV)."/Route.php";
+            require_once __DIR__."/../".mb_strtolower(ENV)."/Route.php";           
             $routerDispatch = $this->router->dispatch(Common::getMethod(), Common::getPathUrl());
            
             if ($routerDispatch == null) {

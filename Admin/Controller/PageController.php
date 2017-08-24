@@ -11,6 +11,6 @@ class PageController extends AdminController {
     //put your code here
     
     public function listing() {
-        echo 'listing';
+        $this->view->render("pages/list");
     }
 }
