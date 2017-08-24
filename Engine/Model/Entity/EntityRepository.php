@@ -48,21 +48,23 @@ abstract class EntityRepository extends Model {
         return $this->createEntities($rows);
     }
 
-    public function save(Entity $entry) {
+    public function save(Entity $entry) {        
         $data = array();
         foreach ($this->fields as $field) {
-            $data[$field] = $entry->$field;
+            $data[$field] = $entry->$field;            
         }
-        if ($entry->{$this->primaryKey}) {
+       
+        if ($entry->{$this->primaryKey}) {            
             unset($data[$this->primaryKey]);
-            return (bool) $this->db->update($this->table, $data, array(
+             $this->db->update($this->table, $data, array(
                         $this->primaryKey => $entry->{$this->primaryKey}
             ));
+            return $entry;
         }
         $id = $this->db->insert($this->table, $data);
         if ($id) {
             $entry->{$this->primaryKey} = $id;
-//            return true;
+           
         }
         return $entry;
     }

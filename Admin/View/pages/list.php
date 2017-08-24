@@ -1,8 +1,8 @@
-<?= $this->theme->header() ?>
 
+<?= $this->theme->header() ?>
 <main>
     <div class="container">
-        <h3>Pages list</h3>
+        <h3>Pages list <a href="/admin/pages/create">create page</a></h3>
 
         <table class="table table-hover">
             <thead>
@@ -13,23 +13,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Марк</td>
-                    <td>Отто</td>
+                 <?php foreach ($pages as $page): ?>
+                <tr>     
+                    <td><?=$page->id?></td>
+                    <td><a href="/admin/pages/edit/<?=$page->id?>" ><?=$page->title?></a></td>
+                    <td><?=$page->date?></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Джейкоб</td>
-                    <td>Тортон</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td >Ларри the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <?php endforeach;?>
             </tbody>
         </table>
     </div>
 </main>
+
+
 <?= $this->theme->footer() ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Model\User;
+namespace Admin\Model\Page;
 
 use Engine\Model\Entity\EntityRepository;
 
@@ -9,7 +9,7 @@ use Engine\Model\Entity\EntityRepository;
  *
  * @author ivc_shipul
  */
-class UserRepository extends EntityRepository {
+class PageRepository extends EntityRepository {
 
     protected $table = 'page';
     protected $entityClass = 'Admin\\Model\\Page\\Page';

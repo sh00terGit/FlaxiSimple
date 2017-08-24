@@ -18,7 +18,13 @@ class AdminController extends Controller  {
      * @var Auth $auth 
      */
        protected $auth;
-
+       
+       
+       /**
+        *
+        * @var array $data контейнер с данными
+        */
+       protected $data = array();
 
        /**
         * 

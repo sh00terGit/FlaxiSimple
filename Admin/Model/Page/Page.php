@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Model\User;
+namespace Admin\Model\Page;
 use Engine\Model\Entity\Entity;
 
 /**
